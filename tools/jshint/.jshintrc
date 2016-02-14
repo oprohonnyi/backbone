@@ -1,0 +1,26 @@
+{
+    "boss": true,  // true: Tolerate assignments where comparisons would be expected
+    "curly": true,  // true: Require {} for every new block or scope
+    "eqeqeq": false,  // true: Require triple equals (===) for comparison
+    "eqnull": false,  // true: Tolerate use of `== null`
+    "expr": true,  // true: Tolerate `ExpressionStatement` as Programs
+    "immed": true,  // true: Require immediate invocations to be wrapped in parens e.g. `(function () { } ());`
+    "noarg": true,  // true: Prohibit use of `arguments.caller` and `arguments.callee`
+    "quotmark": "double",  // Quotation mark consistency ("double" : require double quotes)
+    "smarttabs": true,
+    "trailing": true,
+    "browser": true,
+    "devel": true,
+    "sub": true,
+    "undef": true,  // true: Require all non-global variables to be declared (prevents global leaks)
+    "unused": true,  // true: Require all defined variables be used
+    "maxparams": false,  // {int} Max number of formal params allowed per function
+    "maxdepth": 10,  // {int} Max depth of nested blocks (within functions)
+    "maxstatements": 30,  // {int} Max number statements per function
+    "maxcomplexity": 10,  // {int} Max cyclomatic complexity per function
+    "maxlen": false,  // {int} Max number of characters per line
+    "globals": {
+        "$": true,
+        "ActiveXObject": true
+    }
+}
