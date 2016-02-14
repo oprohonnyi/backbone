@@ -1,0 +1,61 @@
+body {
+    padding: 20px;
+    min-width: 570px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.nav-pills a {
+    text-decoration: none;
+}
+
+.text-center th {
+    text-align: center;
+}
+
+table td {
+    width: 25%;
+
+}
+
+.table > tbody > tr > td {
+    border-top: none;
+    border-right: 1px solid #eee;
+    padding: 5px 20px;
+}
+.table > tbody > tr > td:last-child {
+    border-right: none;
+}
+
+tr td:last-child{
+    border-right: none;
+}
+
+.float-right {
+   float: right;
+}
+
+#file-name-filter {
+    top: 0;
+}
+
+tr:hover {
+    background: #eee;
+}
+
+
+tr:hover td:last-child{
+    background: #fff;
+}
+
+#actions a {
+    display: block;
+    padding: 5px 10px;
+}
+
+.panel-footer {
+    border-top: none;
+    background: #fff;
+}

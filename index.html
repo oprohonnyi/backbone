@@ -15,11 +15,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
     <!-- Application styles -->
-    <link rel="stylesheet" href="assets/common/css/layout.css" media="all" type="text/css">
+    <link rel="stylesheet" href="assets/common/css/main.css" media="all" type="text/css">
 
     <!-- /build -->
 
@@ -36,7 +33,6 @@
             crossorigin="anonymous"></script>
     <script>if (typeof $.fn.modal === 'undefined') {
         document.write(unescape("%3Clink rel='stylesheet' href='assets/common/libs/bootstrap-3.3.6/bootstrap.min.css' media='all' type='text/css'%3E"));
-        document.write(unescape("%3Clink rel='stylesheet' href='assets/common/libs/bootstrap-3.3.6/assets/common/libs/bootstrap-3.3.6/bootstrap-theme.min.css' media='all' type='text/css'%3E"));
         document.write(unescape("%3Cscript src='assets/common/libs/bootstrap-3.3.6/bootstrap.min.js' type='text/javascript'%3E%3C/script%3E"));
     }</script>
 
@@ -67,6 +63,84 @@
     <!-- /build -->
 </head>
 <body>
+
+<div class="page-header">
+    <h1>MB File Manager
+        <small>File list</small>
+    </h1>
+</div>
+
+<div class="panel panel-default">
+    <table class="table">
+        <tr class="text-center">
+            <th><a id="file-name-sort" href="">File name <span id="file-name-icon"
+                                                               class="glyphicon glyphicon-chevron-down"></span></a></th>
+            <th><a id="file-type-sort" href="">File type <span id="file-type-icon"
+                                                               class="glyphicon glyphicon-chevron-down"></span></a></th>
+            <th><a id="size-sort" href="">Size (Kb) <span id="size-icon"
+                                                          class="glyphicon glyphicon-chevron-down"></span></a></th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td id="actions" rowspan="4">
+                <a href=""><span class="glyphicon glyphicon-download-alt"></span> Download</a>
+                <a href=""><span class="glyphicon glyphicon-eye-open"></span> Preview</a>
+                <a href=""><span class="glyphicon glyphicon-bookmark"></span> Bookmark</a>
+                <a href=""><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td></td>
+        </tr>
+        <tr class="fixed-row">
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                    <button id="file-name-filter" class="btn btn-default glyphicon glyphicon-search" type="button"></button>
+                    </span>
+                </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="panel-footer">
+        <div class="btn-group" role="group" aria-label="">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">File List</a></li>
+                <li role="presentation"><a href="#">Bookmarks</a></li>
+            </ul>
+        </div>
+        <div class="btn-group float-right" role="group" aria-label="">
+            <button type="button" class="btn btn-default" disabled="disabled">Upload</button>
+            <button type="button" class="btn btn-default">Create New Text File</button>
+        </div>
+    </div>
+</div>
+
+<div>
+
+</div>
 
 </body>
 </html>
