@@ -19,8 +19,8 @@ Local environment configuration process description (for developers only):
 
 ## Usage
 
-* Open `<project root>/build/index.html` file in browser. 
-* Run `<project root>/build.bat` file to rebuild the application, if needed. 
+* Open `<project root>/index.html` file in browser to see the application in work (non-minified version). 
+* Run `<project root>/build.bat` file to build the application, built sources will be generated to `<project root>/build/`. 
 
 ## Project structure
 
