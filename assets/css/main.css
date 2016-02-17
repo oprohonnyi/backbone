@@ -1,0 +1,78 @@
+/*
+ * General layout
+ */
+body {
+	padding: 20px;
+	min-width: 570px;
+}
+
+a {
+	text-decoration: underline;
+}
+
+.nav-pills a {
+	text-decoration: none;
+}
+
+.float-right {
+	float: right;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.panel-footer {
+	border-top: none;
+	background: #fff;
+}
+
+/*
+ * Tables
+ */
+.table {
+	min-height: 200px;
+}
+
+.table > tbody > tr > td {
+	border-top: none;
+	border-right: 1px solid #eee;
+	padding: 5px 20px;
+	width: 25%;
+}
+
+.table > tbody > tr > td:last-child {
+	border-right: none;
+}
+
+tr.text-center th {
+	text-align: center;
+}
+
+td.row-select {
+	cursor: pointer;
+}
+
+tr.selected td.row-select {
+	background: #9BCAF1;
+}
+
+/*
+ * Minor fixes
+ */
+.glyphicon-search {
+	top: 0;
+}
+
+#actions a {
+	display: block;
+	padding: 0  0 0 10px;
+}
+
+#bookmarks-sub-header {
+	display: none;
+}
+
+#actions .file-name {
+	margin-top: 10px;
+}
