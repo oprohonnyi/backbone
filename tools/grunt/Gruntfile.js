@@ -85,14 +85,6 @@ module.exports = function (grunt) {
 
 		// Copy assets to build directory.
 		copy: {
-			configs: {
-				expand: true,
-				flatten: true,
-				cwd: "<%= rootPath %>",
-				src: ["assets/**/config/*"],
-				dest: "<%= buildPath %>assets/config/",
-				filter: "isFile"
-			},
 			images: {
 				expand: true,
 				flatten: true,
@@ -130,8 +122,8 @@ module.exports = function (grunt) {
 				options: {
 					replacements: [
 						{
-							pattern: "./assets/common/config/config.js",
-							replacement: "./assets/config/config.js"
+							pattern: "/config/config.js",
+							replacement: "/config/config.js"
 						}
 					]
 				}
@@ -143,7 +135,7 @@ module.exports = function (grunt) {
 				options: {
 					replacements: [
 						{
-							pattern: "assets/common/libs/lib.min.js",
+							pattern: "assets/libs/lib.min.js",
 							replacement: "assets/libs/lib.min.js"
 						}
 					]
@@ -183,7 +175,6 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask("mergeAssets", [
-		"copy:configs",
 		"copy:images",
 		"copy:libraries"
 	]);

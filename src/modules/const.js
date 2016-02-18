@@ -20,5 +20,6 @@ $.FM.Const = {
 	"BLOB_HEADERS_TEXT": "text/plain; charset=utf-8",
 	"FILE_NAME_PATTERN": "file-name-pattern",
 	"MODE_FILE": "file_mode",
-	"MODE_BOOKMARK": "bookmark_mode"
+	"MODE_BOOKMARK": "bookmark_mode",
+	"PILS_ACTIVE_CLASS": "active"
 };

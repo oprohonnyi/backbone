@@ -26,15 +26,32 @@ $.FM.FileView = Backbone.View.extend({
 	},
 
 	save_handler: function () {
-		alert("save");
+		var file = {};
+
+		file.id = this.$el.find("#file-id").val();
+		file.name = this.$el.find("#insert-filename").val().trim();
+		file.content = this.$el.find("#insert-filecontent").val().trim();
+		if (file.id !== "") {
+			debugger;
+			file.size = this.model.calculateFileSize(file.content);
+		} else {
+			file = new $.FM.FileText(file);
+		}
+
+		$.FM.Components.filesList.create(file);
+
+		alert("All changes have been sucessfully saved!");
+
+		window.location = "#files";
 
 		return false;
 	},
 
 	cancel_handler: function () {
-		if(confirm("Are you sure you want to cancel any changes in the file?")) {
-			window.history.back();
+		if (confirm("Are you sure you want to cancel any changes in the file?")) {
+			window.location = "#files";
 		}
+
 		return false;
 	}
 });

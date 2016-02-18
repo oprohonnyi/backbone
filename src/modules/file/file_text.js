@@ -7,7 +7,7 @@ $.FM.FileText = $.FM.File.extend({
 		options || (options = {});
 
 		if(attributes.size === undefined) {
-			this.set("size", this._calculateFileSize(attributes.content));
+			this.set("size", this.calculateFileSize(attributes.content));
 		}
 
 		this.bind("error", this.defaultErrorHandler);
@@ -20,7 +20,7 @@ $.FM.FileText = $.FM.File.extend({
 		console.error("$.FM.FileText error occured", response);
 	},
 
-	_calculateFileSize: function(content) {
+	calculateFileSize: function(content) {
 		return content.length;
 	}
 });

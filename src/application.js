@@ -3,7 +3,6 @@ $.FM.Components = {
 	filesView: null,
 	bookmarksList: null,
 	bookmarksView: null,
-	editedFile: null,
 	fileView: null
 };
 
@@ -30,16 +29,21 @@ $.FM.Router = Backbone.Router.extend({
 		this.filesContainer = $("#files-list");
 		this.filesPageContainer = $("#files-page");
 		this.fileContainer = $("#edit-file-page");
+		this.navContainer = $(".nav-pills li.active");
 	},
 
 	index: function () {
+		if ($.FM.Components.filesList !== null) {
+			this.files();
+			return;
+		}
+
 		// Clear LS
 		localStorage.clear();
 
-		$.FM.Components.editedFile = new $.FM.File();
 		$.FM.Components.fileView = new $.FM.FileView({
 			el: this.fileContainer,
-			model: $.FM.Components.editedFile
+			model: new $.FM.File()
 		});
 
 		$.FM.Components.bookmarksList = new $.FM.Bookmarks();
@@ -65,6 +69,7 @@ $.FM.Router = Backbone.Router.extend({
 		$.FM.Components.filesList.each(function (file) {
 			file.save();
 		});
+
 		delete $.FM.initialData;
 	},
 
@@ -117,8 +122,10 @@ $.FM.Router = Backbone.Router.extend({
 			window.location = "";
 		}
 
+		this.navContainer.removeClass($.FM.Const.PILS_ACTIVE_CLASS);
 		this.filesPageContainer.hide();
 
+		$.FM.Components.fileView.model = new $.FM.File();
 		$.FM.Components.fileView.render();
 		this.fileContainer.show();
 	},
@@ -129,12 +136,11 @@ $.FM.Router = Backbone.Router.extend({
 		}
 
 		var requestedFile = $.FM.Components.filesList.models[index];
-		if(requestedFile !== undefined) {
-			$.FM.Components.editedFile = requestedFile;
-		}
 
+		this.navContainer.removeClass($.FM.Const.PILS_ACTIVE_CLASS);
 		this.filesPageContainer.hide();
 
+		$.FM.Components.fileView.model = requestedFile;
 		$.FM.Components.fileView.render();
 		this.fileContainer.show();
 	}
