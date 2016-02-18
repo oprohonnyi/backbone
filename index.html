@@ -65,8 +65,10 @@
 
 	<!-- Application sources -->
 	<script src="src/modules/const.js"></script>
+
 	<script src="src/modules/file/file.js"></script>
 	<script src="src/modules/file/file_text.js"></script>
+	<script src="src/modules/file/file_text_view.js"></script>
 
 	<script src="src/modules/files/files.js"></script>
 	<script src="src/modules/files/files_view.js"></script>
@@ -91,54 +93,107 @@
 </div>
 
 <div class="panel panel-default">
-	<table id="files-list" class="table">
-		<tr class="text-center">
-			<th><a href="">File name <span class="glyphicon"></span></a></th>
-			<th><a href="">File type <span class="glyphicon"></span></a></th>
-			<th><a href="">Size (Kb) <span class="glyphicon"></span></a></th>
-			<th>Action</th>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td rowspan="4">
-				Select file at the left side by clicking on it.
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td></td>
-		</tr>
-		<tr class="fixed-row">
-			<td>
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default glyphicon glyphicon-search"
-							type="button"></button>
-                    </span>
-				</div>
-			</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
+	<div id="files-page">
+		<table id="files-list" class="table">
+			<tr class="text-center">
+				<th><a href="">File name <span class="glyphicon"></span></a></th>
+				<th><a href="">File type <span class="glyphicon"></span></a></th>
+				<th><a href="">Size (Kb) <span class="glyphicon"></span></a></th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="4">
+					Select file at the left side by clicking on it.
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td></td>
+			</tr>
+			<tr class="fixed-row">
+				<td>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+						<button class="btn btn-default glyphicon glyphicon-search"
+								type="button"></button>
+						</span>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<table id="bookmarks-list" class="table">
+			<tr class="text-center">
+				<th><a href="">File name <span class="glyphicon"></span></a></th>
+				<th><a href="">File type <span class="glyphicon"></span></a></th>
+				<th><a href="">Size (Kb) <span class="glyphicon"></span></a></th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr class="fixed-row">
+				<td>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+						<button class="btn btn-default glyphicon glyphicon-search"
+								type="button"></button>
+						</span>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div id="edit-file-page">
+		<div class="panel-body">
+			Loading...
+		</div>
+	</div>
 	<div class="panel-footer">
 		<div class="btn-group" role="group" aria-label="">
 			<ul class="nav nav-pills">
@@ -156,49 +211,60 @@
 </div>
 
 
+
+
 <script type="text/template" id="files-list-tpl">
 	<tbody>
 	<tr class="text-center">
-		<th><a id="file-name-sort" href="">File name <span id="file-name-icon"
-														   class="glyphicon"></span></a></th>
-		<th><a id="file-type-sort" href="">File type <span id="file-type-icon"
-														   class="glyphicon"></span></a></th>
-		<th><a id="size-sort" href="">Size (Kb) <span id="size-icon"
-													  class="glyphicon"></span></a></th>
+		<th><a class="file-name-sort" href="#">File name <span class="file-name-icon glyphicon"></span></a></th>
+		<th><a class="file-type-sort" href="#">File type <span class="file-type-icon glyphicon"></span></a></th>
+		<th><a class="size-sort" href="#">Size (Kb) <span class="size-icon glyphicon"></span></a></th>
 		<th>Action</th>
 	</tr>
-	<% _.each(fileList, function(file, index) { %>
-	<tr id="file-row-<%= index %>" data-index="<%= index %>"
-	<% if(selectedIndex === index) { %>class="selected"<% } %>>
-	<td class="row-select"><%= file.name %></td>
-	<td class="row-select"><%= file.type %></td>
-	<td class="row-select"><%= file.size %></td>
-	<% if(index === 0) { %>
-	<td id="actions" rowspan="4">
-		<% if(selectedIndex >= 0) { %>
-		<a id="download-action" href="#" data-index="<%= selectedIndex %>"><span
-				class="glyphicon glyphicon-download-alt"></span> Download</a>
-		<!--<a href=""><span class="glyphicon glyphicon-eye-open"></span> Preview</a>-->
-		<a id="bookmark-action" data-index="<%= selectedIndex %>" href="#"><span
-				class="glyphicon glyphicon-bookmark"></span> Bookmark</a>
-		<a id="edit-action" href="#file/<%= selectedIndex %>/edit"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+	<% if(mode === $.FM.Const.MODE_FILE) { %>
+		<% _.each(fileList, function(file, index) { %>
+		<tr data-index="<%= index %>" <% if(selectedIndex === index) { %>class="selected"<% } %> >
+		<td class="row-select"><%= file.name %></td>
+		<td class="row-select"><%= file.type %></td>
+		<td class="row-select"><%= file.size %></td>
+		<% if(index === 0) { %>
+		<td class="actions" rowspan="4">
+			<% if(selectedIndex >= 0) { %>
+			<a id="download-action" href="#" data-index="<%= selectedIndex %>"><span
+					class="glyphicon glyphicon-download-alt"></span> Download</a>
+			<!--<a href=""><span class="glyphicon glyphicon-eye-open"></span> Preview</a>-->
+			<a id="bookmark-action" data-index="<%= selectedIndex %>" href="#"><span
+					class="glyphicon glyphicon-bookmark"></span> Bookmark</a>
+			<a id="edit-action" href="#file/<%= selectedIndex %>/edit"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 
-		<div class="file-name">File selected: <span class="bold"><%= fileList[selectedIndex].name %></span></div>
+			<div class="file-name">File selected: <span class="bold"><%= fileList[selectedIndex].name %></span></div>
+			<% } else { %>
+			Select file at the left side by clicking on it.
+			<% } %>
+		</td>
 		<% } else { %>
-		Select file at the left side by clicking on it.
+		<td></td>
 		<% } %>
-	</td>
+		</tr>
+		<% }) %>
 	<% } else { %>
-	<td></td>
+		<% _.each(bookmarksList, function(bookmark, index) { %>
+		<tr>
+		<td><%= bookmark.name %></td>
+		<td><%= bookmark.type %></td>
+		<td><%= bookmark.size %></td>
+		<td class="actions">
+			<a id="remove-action" data-index="<%= index %>" href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+		</td>
+		</tr>
+		<% }) %>
 	<% } %>
-	</tr>
-	<% }) %>
 	<tr class="fixed-row">
 		<td>
 			<div class="input-group">
-				<input id="file-name-pattern" type="text" class="form-control" placeholder="Search for...">
+				<input type="text" class="form-control file-name-pattern" placeholder="Search for...">
 						<span class="input-group-btn">
-						<button id="file-name-filter" class="btn btn-default glyphicon glyphicon-search"
+						<button class="btn btn-default glyphicon glyphicon-search file-name-filter"
 								type="button"></button>
 						</span>
 			</div>
@@ -210,9 +276,24 @@
 	</tbody>
 </script>
 
-<script type="text/template" id="actions-list-tpl">
-
+<script type="text/template" id="file-edit-tpl">
+	<div class="panel-body">
+		<div class="input-group">
+			<label for="insert-filename">File name:</label>
+			<input type="text" class="form-control" placeholder="file1.txt" id="insert-filename" value="<%= file.name %>">
+		</div>
+		<div class="input-group">
+			<label for="insert-filecontent">File content:</label>
+			<textarea class="form-control" rows="5" id="insert-filecontent"><%= file.content %></textarea>
+		</div>
+		<div class="btn-group float-right" role="group" aria-label="">
+			<button type="button" class="btn btn-default">Cancel</button>
+			<button type="button" class="btn btn-default">Save</button>
+		</div>
+	</div>
+	<input id="file-id" type="hidden" value="<%= file.id %>">
 </script>
+
 
 </body>
 </html>

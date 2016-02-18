@@ -18,5 +18,7 @@ $.FM.Const = {
 	"FILE_TABLE_ROW_SELECTED_CLASS": "selected",
 	"DATA_INDEX_ATTR_NAME": "data-index",
 	"BLOB_HEADERS_TEXT": "text/plain; charset=utf-8",
-	"FILE_NAME_PATTERN": "file-name-pattern"
+	"FILE_NAME_PATTERN": "file-name-pattern",
+	"MODE_FILE": "file_mode",
+	"MODE_BOOKMARK": "bookmark_mode"
 };

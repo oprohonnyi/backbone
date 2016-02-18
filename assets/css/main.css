@@ -64,7 +64,7 @@ tr.selected td.row-select {
 	top: 0;
 }
 
-#actions a {
+.actions a {
 	display: block;
 	padding: 0  0 0 10px;
 }
@@ -73,6 +73,22 @@ tr.selected td.row-select {
 	display: none;
 }
 
-#actions .file-name {
+.actions .file-name {
 	margin-top: 10px;
+}
+
+#bookmarks-list, #edit-file-page {
+	display: none;
+}
+
+#edit-file-page .panel-body {
+	width: 60%;
+	margin: 10px 20%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+#edit-file-page .input-group {
+	width: 100%;
+	margin-bottom: 10px;
 }

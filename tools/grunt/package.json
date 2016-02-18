@@ -1,5 +1,5 @@
 {
-  "name": "MB File Manager",
+  "name": "mb_file_manager",
   "version": "0.1.0",
   "description": "File manager implementation using Backbone.js framework and jQuery, Bootstrap third-party components.",
   "devDependencies": {

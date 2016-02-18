@@ -21,6 +21,7 @@
     "maxlen": false,  // {int} Max number of characters per line
     "globals": {
         "$": true,
+        "Backbone": true,
         "ActiveXObject": true
     }
 }

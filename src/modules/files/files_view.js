@@ -4,7 +4,8 @@ $.FM.FilesView = Backbone.View.extend({
 
 	initialize: function () {
 		_.bindAll(this, "render", "render_file_actions", "file_select_handler", "file_download_handler",
-			"file_bookmark_handler", "files_sort_name", "files_sort_type", "files_sort_size", "files_filter_handler");
+			"file_bookmark_handler", "files_sort_name", "files_sort_type", "files_sort_size",
+			"files_filter_handler");
 		this.listenTo(this.collection, "add", this.render);
 		this.listenTo(this.collection, "sort", this.render);
 		this.listenTo(this.collection, "remove", this.render);
@@ -17,6 +18,7 @@ $.FM.FilesView = Backbone.View.extend({
 			renderContent = {};
 
 		renderContent.selectedIndex = -1;
+		renderContent.mode = $.FM.Const.MODE_FILE;
 		renderContent.fileList = collection;
 
 		el.html(this.template(renderContent));
@@ -27,12 +29,12 @@ $.FM.FilesView = Backbone.View.extend({
 			if (this.collection.isAscending === false) {
 				icon = $.FM.Const.ICON_SORT_DESC;
 			}
-			$("#" + this.collection.sortField).addClass(icon);
+			$("." + this.collection.sortField).addClass(icon);
 		}
 
 		// Filtering
 		if (this.collection.filterPattern !== undefined) {
-			$("#" + $.FM.Const.FILE_NAME_PATTERN).val(this.collection.filterPattern);
+			$("." + $.FM.Const.FILE_NAME_PATTERN).val(this.collection.filterPattern);
 		}
 
 		return this;
@@ -44,6 +46,7 @@ $.FM.FilesView = Backbone.View.extend({
 			renderContent = {};
 
 		renderContent.selectedIndex = selectedIndex;
+		renderContent.mode = $.FM.Const.MODE_FILE;
 		renderContent.fileList = collection;
 
 		el.html(this.template(renderContent));
@@ -56,6 +59,7 @@ $.FM.FilesView = Backbone.View.extend({
 			el = $(this.el),
 			renderContent = {};
 
+		renderContent.mode = $.FM.Const.MODE_FILE;
 		renderContent.sortField = sortField;
 		renderContent.isAscending = isAscending;
 		renderContent.fileList = collection;
@@ -69,10 +73,10 @@ $.FM.FilesView = Backbone.View.extend({
 		"click .row-select": "file_select_handler",
 		"click #download-action": "file_download_handler",
 		"click #bookmark-action": "file_bookmark_handler",
-		"click #file-name-sort": "files_sort_name",
-		"click #file-type-sort": "files_sort_type",
-		"click #size-sort": "files_sort_size",
-		"click #file-name-filter": "files_filter_handler"
+		"click .file-name-sort": "files_sort_name",
+		"click .file-type-sort": "files_sort_type",
+		"click .size-sort": "files_sort_size",
+		"click .file-name-filter": "files_filter_handler"
 	},
 
 	file_select_handler: function (e) {
@@ -111,8 +115,9 @@ $.FM.FilesView = Backbone.View.extend({
 			bookmark = {};
 
 		$.extend(true, bookmark, collection[clickedFileIndex]);
+		bookmark.id = null;
 
-		$.FM.Components.bookmarksList.add(bookmark);
+		$.FM.Components.bookmarksList.create(bookmark);
 
 		alert("The file has been successfully added to bookmarks!");
 
@@ -120,7 +125,7 @@ $.FM.FilesView = Backbone.View.extend({
 	},
 
 	files_sort_name: function () {
-		var icon = $("#" + $.FM.Const.ICON_SORT_NAME_ID),
+		var icon = this.$el.find("." + $.FM.Const.ICON_SORT_NAME_ID),
 			isAscending = false;
 		if (icon.hasClass($.FM.Const.ICON_SORT_ASC) === false) {
 			isAscending = true;
@@ -132,7 +137,7 @@ $.FM.FilesView = Backbone.View.extend({
 	},
 
 	files_sort_type: function (e) {
-		var icon = $("#" + $.FM.Const.ICON_SORT_TYPE_ID),
+		var icon = this.$el.find("." + $.FM.Const.ICON_SORT_TYPE_ID),
 			isAscending = false;
 		if (icon.hasClass($.FM.Const.ICON_SORT_ASC) === false) {
 			isAscending = true;
@@ -144,7 +149,7 @@ $.FM.FilesView = Backbone.View.extend({
 	},
 
 	files_sort_size: function (e) {
-		var icon = $("#" + $.FM.Const.ICON_SORT_SIZE_ID),
+		var icon = this.$el.find("." + $.FM.Const.ICON_SORT_SIZE_ID),
 			isAscending = false;
 		if (icon.hasClass($.FM.Const.ICON_SORT_ASC) === false) {
 			isAscending = true;
@@ -156,7 +161,7 @@ $.FM.FilesView = Backbone.View.extend({
 	},
 
 	files_filter_handler: function () {
-		var pattern = $("#" + $.FM.Const.FILE_NAME_PATTERN).val();
+		var pattern = this.$el.find("." + $.FM.Const.FILE_NAME_PATTERN).val();
 
 		if (pattern !== "") {
 			this.collection.filterByName(pattern);
